@@ -9,7 +9,7 @@ a{
 }
 
 a:hover{
-    color: darkblue;
+    color: gray
 }
 
 nav{
@@ -58,21 +58,47 @@ body{
 .slider_my_css{
     max-height: 600px;
 }
-
+.card-body{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
 .card_my_css{
     background-color: #D2B48C;
+    /* width: 500px; */
+
+}
+
+.card_my_css img{
+    max-height: 240px;
+    object-fit: cover;
+}
+
+.card{
+    max-width: 275px;
+}
+
+.row{
+    gap: 5%;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .cardButton_my_css{
     background-color: inherit;
-    border: none;
+    border: 1px solid black;
     color: black;
     padding: 5px 15px;
+    transition: .2s;
 }
 
 .cardButton_my_css:hover{
-    border: 2px solid white;
-    color: white;
+    border: 1px solid #D2B48C;
+    background: #fff;
+    color: #D2B48C;
+    transition: .2s;
 }
 
 
+
+/* регистрация */

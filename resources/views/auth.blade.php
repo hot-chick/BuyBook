@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="CSS/style.css">
     <title>BuyBook</title>
 </head>
-@if (session("success"))
-<div>
+@if (session('success'))
+    <div>
 
-    <span style="width: 80%; margin: 0 auto;">{{session("success")}}</span>
+        <span style="width: 80%; margin: 0 auto;">{{ session('success') }}</span>
 
-</div>
+    </div>
 @endif
+
 <body>
     <form method="post" enctype="multipart/form-data" action="/signin_valid" class="auth">
         @csrf
@@ -24,15 +25,34 @@
             <label for="email" class="form-label">Электронная почта</label>
             <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
         </div>
+        @error('email')
+            <div class="alert alert-danger alert-dismissible">
+                <div class="alert-text">
+                    {{ $message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            </div>
+        @enderror
         <div class="mb-3">
             <label for="password" class="form-label">Пароль</label>
             <input type="password" class="form-control" id="password" name="password">
+
         </div>
-        <button type="submit" class="btn btn-primary">Войти</button>
+        @error('password')
+            <div class="alert alert-danger alert-dismissible">
+                <div class="alert-text">
+                    {{ $message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            </div>
+        @enderror
+        <button type="submit" class="cardButton_my_css">Войти</button>
+
     </form>
     <div class="links">
-        <a href="/reg">Нет аккаунта? Зарегистрируйтесь!</a>
-        <a href="/">Вернуться на главную</a>
+        <a class="nav-link" href="/reg">Нет аккаунта? Зарегистрируйтесь!</a>
+        <br>
+        <a class="nav-link" href="/">Вернуться на главную</a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

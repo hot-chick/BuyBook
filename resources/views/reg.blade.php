@@ -18,24 +18,57 @@
             <label for="name" class="form-label">Имя</label>
             <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name">
         </div>
+        @error('name')
+            <div class="alert alert-danger alert-dismissible">
+                <div class="alert-text">
+                    {{ $message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            </div>
+        @enderror
         <div class="mb-3">
             <label for="email" class="form-label">Электронная почта</label>
             <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
         </div>
+        @error('email')
+            <div class="alert alert-danger alert-dismissible">
+                <div class="alert-text">
+                    {{ $message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            </div>
+        @enderror
         <div class="mb-3">
             <label for="password" class="form-label">Пароль</label>
             <input type="password" class="form-control" id="password" name="password">
         </div>
+        @error('password')
+            <div class="alert alert-danger alert-dismissible">
+                <div class="alert-text">
+                    {{ $message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            </div>
+        @enderror
         <div class="mb-3">
             <label for="confirm_password" class="form-label">Подтвердите пароль</label>
             <input type="password" class="form-control" id="confirm_password" name="confirm_password">
         </div>
-        <button type="submit" class="btn btn-primary">Войти</button>
+        @error('confirm_password')
+            <div class="alert alert-danger alert-dismissible">
+                <div class="alert-text">
+                    {{ $message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            </div>
+        @enderror
+        <button type="submit" class="cardButton_my_css">Войти</button>
     </form>
 
     <div class="links">
-        <a href="/auth">Есть аккаунт? Войдите!</a>
-        <a href="/">Вернуться на главную</a>
+        <a class="nav-link" href="/auth">Есть аккаунт? Войдите!</a>
+        <br>
+        <a class="nav-link" href="/">Вернуться на главную</a>
     </div>
 
 

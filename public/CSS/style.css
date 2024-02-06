@@ -1,0 +1,78 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: darkblue;
+}
+
+nav{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.wave{
+    position: relative;
+}
+.wave span{
+    position: relative;
+    display: inline-block;
+    font-size: 24px;
+    animation: flip 2s infinite;
+    animation-delay: calc(.2s * var(--i));
+}
+@keyframes flip{
+    0%, 80%{
+        transform: rotateY(360deg);
+    }
+}
+
+.auth{
+    width: 20%;
+    margin: 50px auto;
+}
+
+.links{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: 0 auto;
+}
+/* Шапка */
+.container-fluid{
+    background-color: #D2B48C;
+    padding: 20px;
+}
+
+/* Главная */
+body{
+    background-color: #FFE4C4;
+}
+
+.slider_my_css{
+    max-height: 600px;
+}
+
+.card_my_css{
+    background-color: #D2B48C;
+}
+
+.cardButton_my_css{
+    background-color: inherit;
+    border: none;
+    color: black;
+    padding: 5px 15px;
+}
+
+.cardButton_my_css:hover{
+    border: 2px solid white;
+    color: white;
+}
+
+

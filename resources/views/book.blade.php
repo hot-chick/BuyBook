@@ -1,14 +1,24 @@
 <x-header></x-header>
-<div class="card mb-3">
-    <img src="./images/{{ $book->image }}" class="card-img-top" alt="Ошибочка вышла">
-    @foreach ($books as $book)
-        <div class="card-body">
-            <h5 class="card-title">{{ $book->title }}</h5>
-            <p class="card-text">{{ $book->description }}</p>
-            <p class="card-text"><small class="text-body-secondary">{{ $book->author }}</small></p>
+<div class="container" style="max-width: 500px">
+    <div class="card text-center">
+        <div class="card-header">
+            {{ $book->title }}
         </div>
-    @endforeach
+        <div class="card-body">
+            <img style="max-width: 500px;" src="../images/{{ $book->image }}" class="card-img-top" alt="Ошибочка вышла">
+            <p class="card-text">{{ $book->description }}</p>
+            <form action="{{ route('cart.add') }}" method="POST">
+                @csrf
+                <input type="hidden" name="book_id" value="{{ $book->id }}">
+                <button type="submit">Добавить в корзину</button>
+            </form>
+        </div>
+        <div class="card-footer text-body-secondary">
+            {{ $book->author }}
+        </div>
+    </div>
 </div>
+
 </body>
 
 </html>

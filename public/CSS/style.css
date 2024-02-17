@@ -74,9 +74,9 @@ body{
     object-fit: cover;
 }
 
-.card{
+/* .card{
     max-width: 275px;
-}
+} */
 
 .row{
     gap: 5%;

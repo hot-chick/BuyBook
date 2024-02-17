@@ -14,7 +14,7 @@
                         <p class="card-text">{{ $book->author }}</p>
                         <p class="card-text"><small class="text-muted">Цена: {{ $book->price }} рублей</small></p>
                     </div>
-                    <a href="#">Подробнее</a>
+                    <a href="/book/{{$book->id}}">Подробнее</a>
                     <button class="cardButton_my_css">В корзину</button>
                 </div>
             @endforeach

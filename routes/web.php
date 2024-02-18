@@ -28,8 +28,8 @@ Route::post('/signup_valid', [UserController::class, "signup_valid"]);
 Route::post('/signin_valid', [UserController::class, "signin_valid"]);
 
 Route::get('/catalog', [MainController::class, "catalog"]);
-Route::get('book/{book}', [MainController::class, "bookPage"]);
+Route::get('/book/{book}', [MainController::class, "bookPage"]);
 Route::get('/trash', [MainController::class, "trash"]);
 
-Route::post('/cart/add', [MainController::class, "addItem"])->name('cart.add');
+Route::post('/addItem', [MainController::class, "addItem"]);
 

@@ -7,7 +7,7 @@
         <div class="card-body">
             <img style="max-width: 500px;" src="../images/{{ $book->image }}" class="card-img-top" alt="Ошибочка вышла">
             <p class="card-text">{{ $book->description }}</p>
-            <form action="{{ route('cart.add') }}" method="POST">
+            <form action="/addItem" enctype="multipart/form-data" method="post">
                 @csrf
                 <input type="hidden" name="book_id" value="{{ $book->id }}">
                 <button type="submit">Добавить в корзину</button>

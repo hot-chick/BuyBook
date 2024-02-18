@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Trash;
 
 class MainController extends Controller
 {
@@ -21,34 +23,49 @@ class MainController extends Controller
     }
     public function addItem(Request $request)
     {
-        // Валидация данных, если необходимо
 
-        // Получаем данные о товаре из запроса
-        $BookId = $request->input('book_id');
-        $Book = Book::findOrFail($BookId);
+        $book = Book::findOrFail("id");
 
-        // Добавляем товар в корзину (логика может зависеть от того, как вы реализовали корзину)
-        // Например, вы можете использовать сессию для хранения корзины
-        // Или сохранять данные о корзине в базе данных для зарегистрированных пользователей
-        // Здесь предполагается использование сессии
-        $trash = session()->get('trash', []);
+        $trash_create = trash::create([
+            'user_id' => Auth::user()->id,
+            'book_id'  => $book,
+        ]);
+        
+        if ($trash_create) {
+            return redirect("/trash")->with("success", "");
+        } else {
+            return redirect()->back()->with("error", "Неверный логин или пароль");
+        }
+        // // Валидация данных, если необходимо
 
-        // Добавляем товар в массив корзины
-        $trash[$BookId] = [
-            'id' => $Book->id,
-            'name' => $Book->description,
-            'name' => $Book->title,
-            'price' => $Book->price,
-            'name' => $Book->author,
-            'name' => $Book->genre_id,
-            'name' => $Book->age_limit_id,
-            // Другие данные о товаре, которые вы хотите сохранить
-        ];
+        // // Получаем данные о товаре из запроса
+        // $BookId = $request->input('book_id');
+        // $Book = Book::findOrFail($BookId);
 
-        // Обновляем данные о корзине в сессии
-        session()->put('cart', $cart);
+        // // Добавляем товар в корзину (логика может зависеть от того, как вы реализовали корзину)
+        // // Например, вы можете использовать сессию для хранения корзины
+        // // Или сохранять данные о корзине в базе данных для зарегистрированных пользователей
+        // // Здесь предполагается использование сессии
+        // $trash = session()->get('trash', []);
 
-        // Можете вернуть редирект или какой-то JSON-ответ в зависимости от вашей логики
-        return redirect()->back()->with('success', 'Товар успешно добавлен в корзину');
+        // // Добавляем товар в массив корзины
+        // $trash[$BookId] = [
+        //     'trash_id' => $Book->trash_id,
+        //     'user_id' => Auth::user()->id,
+        //     'book_id' => $Book->book_id,
+        //     // Другие данные о товаре, которые вы хотите сохранить
+        // ];
+
+        // // Обновляем данные о корзине в сессии
+        // session()->put('trash', $trash);
+
+        // // Можете вернуть редирект или какой-то JSON-ответ в зависимости от вашей логики
+        // return redirect()->back()->with('success', 'Товар успешно добавлен в корзину');
+
+
+        
     }
+
+    
+    
 }

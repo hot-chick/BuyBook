@@ -11,5 +11,8 @@ class Trash extends Model
         'trash_id',
         'user_id',
         'book_id',
+        'updated_at',
+        'created_at',
+        
     ];
 }
